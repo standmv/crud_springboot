@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Estudiantes</title>
+</head>
+<body>
+<div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <td>Matricula</td>
+            <td>Nombre</td>
+            <td>Apellido</td>
+            <td>Telefono</td>
+            <td>Acciones</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${listaEstudiantes.empty}">
+            <td colspan="4">No Hay Estudiantes</td>
+        </tr>
+        <tr th:each="task : ${listaEstudiantes}">
+            <td th:text="${task.matricula}">1</td>
+            <td th:text="${task.nombre}">Nombre</td>
+            <td th:text="${task.apellido}">Apellido</td>
+            <td th:text="${task.telefono}">Telefono</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

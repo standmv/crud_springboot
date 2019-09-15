@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar</title>
+</head>
+<body>
+<form action="#" th:action="@{guardarCambios}" method="put">
+    <input type="number" name="matricula" th:value="*{estudiante.matricula}" />
+    <input type="text" name="nombre" th:value="*{estudiante.nombre}" />
+    <input type="text" name="apellido" th:value="*{estudiante.apellido}" />
+    <input type="text" name="telefono" th:value="*{estudiante.telefono}" />
+    <button type="submit" name="btnGuardar">Guardar</button>
+</form>
+</body>
+</html>
