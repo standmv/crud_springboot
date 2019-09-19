@@ -14,8 +14,15 @@ import java.util.List;
 @RequestMapping("/estudiante")
 public class EstudianteController {
 
+    /*
     @Autowired
     EstudianteRepository estudianteRepository;
+    */
+
+    EstudianteRepository estudianteRepository;
+    public EstudianteController(EstudianteRepository estudianteRepository){
+        this.estudianteRepository = estudianteRepository;
+    }
 
     @RequestMapping("/")
     public String index(Model model){
@@ -24,8 +31,8 @@ public class EstudianteController {
         return "index";
     }
 
-    @RequestMapping("/eliminarEstudiante")
-    public String eliminarEstudiante(@RequestParam(value = "matricula") int matricula){
+    @RequestMapping(value = "/eliminarEstudiante/{matricula}", method = RequestMethod.POST)
+    public String eliminarEstudiante(@PathVariable int matricula){
         estudianteRepository.delete(estudianteRepository.findByMatricula(matricula));
         return "redirect:/estudiante/";
     }
@@ -52,7 +59,7 @@ public class EstudianteController {
         return "redirect:/estudiante/";
     }
 
-    @RequestMapping(value = "/guardarCambios", method = RequestMethod.PUT)
+    @RequestMapping(value = "/guardarCambios", method = RequestMethod.POST)
     public String guardarCambios(@RequestParam(value = "matricula") int matricula,
                                  @RequestParam(value = "nombre") String nombre,
                                  @RequestParam(value = "apellido") String apellido,

@@ -24,9 +24,16 @@
             <td th:text="${task.nombre}">Nombre</td>
             <td th:text="${task.apellido}">Apellido</td>
             <td th:text="${task.telefono}">Telefono</td>
+            <td><a th:href="@{/estudiante/editarEstudiante/{matricula}/(matricula=${task.matricula})}">Editar</a></td>
+            <td>
+                <form action="#" th:action="@{'/estudiante/eliminarEstudiante/{matricula}' (matricula=${task.matricula})}" method="post">
+                    <button type="submit" id="submitButton">Eliminar </button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>
 </div>
+<a th:href="@{/estudiante/crearEstudiante/}">Crear</a>
 </body>
 </html>
